@@ -1,0 +1,32 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: java-spring-boot
+    version: 1.0.0-SNAPSHOT
+  sleuth:
+    baggage:
+      remote-fields:
+        - x-request-id
+      local-fields:
+        - x-request-id-2
+      correlation-fields:
+        - x-request-id
+        - x-request-id-2
+      tag-fields:
+        - x-request-id
+        - x-request-id-2
+    sampler:
+      probability: 1.0
+  cloud:
+    gcp:
+      core:
+        enabled: false
+      trace:
+        enabled: false
+
+management:
+  metrics:
+    export:
+      stackdriver:
+        enabled: false
